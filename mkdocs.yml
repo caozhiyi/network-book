@@ -1,0 +1,117 @@
+site_name: 云网络：从隔离到连接
+site_description: 从物理网络到云原生网络的演进之旅
+site_author: ekko
+repo_name: caozhiyi/network-book
+repo_url: https://github.com/caozhiyi/network-book
+
+theme:
+  name: material
+  language: zh
+  palette:
+    # 浅色模式切换
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: black
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: 切换到暗黑模式
+    # 暗黑模式切换
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: 切换到浅色模式
+  features:
+    - navigation.indexes # 卷名可点击直接进入导读，支持折叠
+    - navigation.top # 返回顶部按钮
+    - navigation.footer # 底部翻页组件
+    - content.code.copy # 代码块复制按钮
+    - content.code.annotate # 代码交互注释
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - admonition
+  - pymdownx.details
+  - attr_list
+
+nav:
+  - "首页": index.md
+  - "写在前面": 00.写在前面.md
+
+  - "卷一: 物理网络的边界":
+    - 00a.卷一导读物理网络的边界.md
+    - "1. 一根网线两头是谁": 01.一根网线两头是谁.md
+    - "2. 十万台机器的网络": 02.十万台机器的网络.md
+
+  - "卷二: 多租户隔离":
+    - 02a.卷二导读多租户隔离.md
+    - "3. 共用网络的噩梦": 03.共用网络的噩梦.md
+    - "4. VLAN的边界": 04.VLAN的边界.md
+    - "5. 给包裹再套一层VxLAN与Overlay网络": 05.给包裹再套一层VxLAN与Overlay网络.md
+    - "6. Tunnel在哪里终止VTEP的落点": 06.Tunnel在哪里终止VTEP的落点.md
+
+  - "卷三: VPC内部通信":
+    - 07a.卷三导读VPC内部通信.md
+    - "7. VPC是什么从网络技术到云产品": 07.VPC是什么从网络技术到云产品.md
+    - "8. 同一个子网内的通信ARP代答与封包": 08.同一个子网内的通信ARP代答与封包.md
+    - "9. 跨子网通信分布式网关与三层路由": 09.跨子网通信分布式网关与三层路由.md
+    - "10. 谁来守门安全组与网络ACL": 10.谁来守门安全组与网络ACL.md
+    - "11. VPC内的基础网络服务DHCP与DNS与元数据与弹性网卡": 11.VPC内的基础网络服务DHCP与DNS与元数据与弹性网卡.md
+    - "12. 容器加入VPC之Pod如何获得VPC_IP": 12.容器加入VPC之Pod如何获得VPC_IP.md
+
+  - "卷四: 公网连接":
+    - 12a.卷四导读公网连接.md
+    - "13. VM要上网NAT网关的诞生": 13.VM要上网NAT网关的诞生.md
+    - "14. 固定的公网身份弹性公网IP": 14.固定的公网身份弹性公网IP.md
+    - "15. 流量涌入一台撑不住负载均衡": 15.流量涌入一台撑不住负载均衡.md
+
+  - "卷五: VPC互联":
+    - 15a.卷五导读VPC互联.md
+    - "16. 两个VPC之间拉一条线对等连接": 16.两个VPC之间拉一条线对等连接.md
+    - "17. VPC互联的总线云联网": 17.VPC互联的总线云联网.md
+    - "18. 地址冲突也要互访PrivateLink": 18.地址冲突也要互访PrivateLink.md
+
+  - "卷六: 混合云网络":
+    - 18a.卷六导读混合云网络.md
+    - "19. 用互联网打通云和IDC之VPN连接": 19.用互联网打通云和IDC之VPN连接.md
+    - "20. 拉一根光纤专线接入": 20.拉一根光纤专线接入.md
+    - "21. 统一管理云和IDC的连接云联网的纵向扩展": 21.统一管理云和IDC的连接云联网的纵向扩展.md
+
+  - "卷七: 全球接入与加速":
+    - 21a.卷七导读全球接入与加速.md
+    - "22. 全球用户如何找到最近的服务DNS与GSLB": 22.全球用户如何找到最近的服务DNS与GSLB.md
+    - "23. 让流量走更好的路Anycast与云骨干网": 23.让流量走更好的路Anycast与云骨干网.md
+    - "24. 把内容推到用户身边CDN与边缘节点": 24.把内容推到用户身边CDN与边缘节点.md
+
+  - "卷八: 流量安全防护":
+    - 24a.卷八导读流量安全防护.md
+    - "25. 洪水来袭DDoS防护": 25.洪水来袭DDoS防护.md
+    - "26. 伪装成正常请求的攻击WAF与应用层防护": 26.伪装成正常请求的攻击WAF与应用层防护.md
+
+  - "卷九: 可观测与流量治理":
+    - 26a.卷九导读可观测与流量治理.md
+    - "27. 出了问题从哪查起网络流日志": 27.出了问题从哪查起网络流日志.md
+    - "28. 在用户感知之前发现故障主动探测": 28.在用户感知之前发现故障主动探测.md
+    - "29. 故障时如何自救多路径与网络层容灾": 29.故障时如何自救多路径与网络层容灾.md
+    - "30. 微服务的流量治理服务网格与eBPF": 30.微服务的流量治理服务网格与eBPF.md
+
+  - "卷十: AI时代的网络":
+    - 30a.卷十导读AI时代的网络.md
+    - "31. GPU集群的网络当流量不再是请求响应": 31.GPU集群的网络当流量不再是请求响应.md
+    - "32. AI推理的流量调度从负载均衡到语义路由": 32.AI推理的流量调度从负载均衡到语义路由.md
+
+  - "后记":
+    - 33.后记云网络的下一个根本性约束.md
