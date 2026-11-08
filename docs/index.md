@@ -8,14 +8,14 @@ hide:
 
 <div style="text-align: center; margin: 3rem 0;">
 <p style="font-size: 1.4rem; color: #555;">从物理网络到云原生网络的演进之旅</p>
-<p style="font-size: 1.1rem; color: #777; margin-top: 1rem;">十卷三十二章，一条不断生长的因果链</p>
+<p style="font-size: 1.1rem; color: #777; margin-top: 1rem;">九卷三十一章，一条不断生长的因果链</p>
 </div>
 
 ---
 
 **云网络的每一个产品，都是被某个约束逼出来的解法。**
 
-这本书要做的事情，是把这个"逼出来"的过程完整地展示给你看。从最朴素的问题开始——两台机器怎么通信，一路追问到 AI 时代的 GPU 集群网络和推理调度。
+这本书要做的事情，是把这个"逼出来"的过程完整地展示给你看。从最朴素的问题开始——两台机器怎么通信，一路追问到全球加速、安全防护与流量治理。
 
 <div style="text-align: center; margin: 2rem 0;">
 <a href="00.写在前面/" class="md-button md-button--primary" style="font-size: 1.1rem; margin-right: 1rem;">开始阅读 →</a>
@@ -29,4 +29,4 @@ hide:
 
 ---
 
-<img src="./images/book-structure.svg" alt="全书结构：约束链的十次跃迁" width="100%" />
+<img src="./images/book-structure.svg" alt="全书结构：约束链的九次跃迁" width="100%" />
