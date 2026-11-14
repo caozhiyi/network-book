@@ -7,8 +7,34 @@
   - Content pages: TechArticle + BreadcrumbList
 -#}
 
+{#- Query-facing title for SERP only; in-page h1 / side nav stay as-is. -#}
+{% block htmltitle %}
+  {% if page and page.meta and page.meta.seo_title %}
+  <title>{{ page.meta.seo_title | e }} - {{ config.site_name | e }}</title>
+  {% else %}
+  {{ super() }}
+  {% endif %}
+{% endblock %}
+
 {% block extrahead %}
   {{ super() }}
+  {#- Social sharing cards (WeChat / X / Slack): this Material version ships no
+      OG tags natively, so we emit them. -#}
+  {% set og_title = (page.meta.seo_title if page.meta and page.meta.seo_title else (page.meta.title if page.meta and page.meta.title else page.title)) %}
+  {% set og_desc = (page.meta.description if page.meta and page.meta.description else config.site_description) %}
+  <meta property="og:type" content="{{ 'website' if page.is_homepage else 'article' }}">
+  <meta property="og:title" content="{{ og_title | e }}">
+  <meta property="og:description" content="{{ og_desc | e }}">
+  <meta property="og:url" content="{{ config.site_url }}{{ page.url }}">
+  <meta property="og:image" content="{{ config.site_url }}images/social-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="{{ config.site_name | e }}">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ og_title | e }}">
+  <meta name="twitter:description" content="{{ og_desc | e }}">
+  <meta name="twitter:image" content="{{ config.site_url }}images/social-card.png">
   {% if page.is_homepage %}
   <script type="application/ld+json">
   {
@@ -31,8 +57,10 @@
   {
     "@context": "https://schema.org",
     "@type": "TechArticle",
-    "headline": {{ (page.meta.title if page.meta and page.meta.title else page.title) | tojson }},
+    "headline": {{ (page.meta.seo_title if page.meta and page.meta.seo_title else (page.meta.title if page.meta and page.meta.title else page.title)) | tojson }},
     {% if page.meta and page.meta.description %}"description": {{ page.meta.description | tojson }},
+    {% endif %}{% if page.meta and page.meta.git_creation_date_localized_raw_iso_date %}"datePublished": {{ page.meta.git_creation_date_localized_raw_iso_date | tojson }},
+    {% endif %}{% if page.meta and page.meta.git_revision_date_localized_raw_iso_date %}"dateModified": {{ page.meta.git_revision_date_localized_raw_iso_date | tojson }},
     {% endif %}"inLanguage": "zh",
     "url": {{ (config.site_url ~ page.url) | tojson }},
     "author": {

@@ -4,3 +4,14 @@ social/
 
 # temp
 n.tar.gz
+
+# writing process files (not published)
+STYLE_GUIDE.md
+TODO.md
+WRITING_BLUEPRINT.md
+blueprint/
+build-epub-usage.md
+drafts/
+epub-style.css
+review.md
+tips_summary.md
