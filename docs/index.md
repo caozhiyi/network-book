@@ -9,6 +9,7 @@ hide:
 <div style="text-align: center; margin: 3rem 0;">
 <p style="font-size: 1.4rem; color: #555;">从物理网络到云原生网络的演进之旅</p>
 <p style="font-size: 1.1rem; color: #777; margin-top: 1rem;">九卷三十一章，一条不断生长的因果链</p>
+<p style="font-size: 0.95rem; color: #999; margin-top: 1.5rem;"><a href="https://github.com/caozhiyi" style="color: #999; text-decoration: none;">曹智轶</a>（caozhiyi）著</p>
 </div>
 
 ---
@@ -30,3 +31,18 @@ hide:
 ---
 
 <img src="./images/book-structure.svg" alt="全书结构：约束链的九次跃迁" width="100%" />
+
+---
+
+## 关于作者
+
+**曹智轶**（caozhiyi），系统架构师，十年研发经验，专注分布式系统架构、高性能网络、底层系统开发与 AI 工程——研究大模型真正落地时才浮出来的系统工程问题。现于一线云厂商从事基础设施研发。热衷于从第一性原理出发解构复杂问题，并将思考沉淀为长期技术写作。
+
+- **个人网站**：[caozhiyi.cc](https://caozhiyi.cc)
+- **GitHub**：[github.com/caozhiyi](https://github.com/caozhiyi)
+- **邮箱**：[caozhiyi5@gmail.com](mailto:caozhiyi5@gmail.com) —— 勘误、交流、转载，都欢迎
+- **公众号**：**煮码宝藏**（扫码关注）
+
+<img src="./images/wechat-qr.jpg" alt="公众号：煮码宝藏" width="140" />
+
+> 如果这本书帮你理清了某个绕了很久的概念，欢迎去 [GitHub 仓库](https://github.com/caozhiyi/network-book) 点个 Star，这是对作者最大的鼓励。

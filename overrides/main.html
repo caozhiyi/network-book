@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{#-
+  SEO structured data injection (data values follow author.yaml, the canonical
+  author metadata source in caozhiyi.github.io):
+  - Homepage: Book schema (semantic enhancement)
+  - Content pages: TechArticle + BreadcrumbList
+-#}
+
+{% block extrahead %}
+  {{ super() }}
+  {% if page.is_homepage %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "name": {{ config.site_name | tojson }},
+    "url": {{ config.site_url | tojson }},
+    "inLanguage": "zh",
+    "author": {
+      "@type": "Person",
+      "name": "曹智轶 (caozhiyi)",
+      "url": "https://caozhiyi.cc/",
+      "sameAs": ["https://github.com/caozhiyi"]
+    },
+    "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+  }
+  </script>
+  {% elif page.title %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": {{ (page.meta.title if page.meta and page.meta.title else page.title) | tojson }},
+    {% if page.meta and page.meta.description %}"description": {{ page.meta.description | tojson }},
+    {% endif %}"inLanguage": "zh",
+    "url": {{ (config.site_url ~ page.url) | tojson }},
+    "author": {
+      "@type": "Person",
+      "name": "曹智轶 (caozhiyi)",
+      "url": "https://caozhiyi.cc/",
+      "sameAs": ["https://github.com/caozhiyi"]
+    },
+    "isPartOf": {
+      "@type": "Book",
+      "name": {{ config.site_name | tojson }},
+      "url": {{ config.site_url | tojson }}
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": {{ config.site_name | tojson }}, "item": {{ config.site_url | tojson }} }{%- for parent in page.parents %},
+    { "@type": "ListItem", "position": {{ loop.index + 1 }}, "name": {{ parent.title | tojson }} }{%- endfor %},
+    { "@type": "ListItem", "position": {{ page.parents | length + 2 }}, "name": {{ page.title | tojson }} }
+    ]
+  }
+  </script>
+  {% endif %}
+{% endblock %}
