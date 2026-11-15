@@ -1,5 +1,6 @@
 # build caches
 .cache/
+site/
 social/
 
 # temp

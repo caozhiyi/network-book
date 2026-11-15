@@ -31,7 +31,7 @@ description: "一本讲透云网络的开源书：VPC、VxLAN、NAT 与负载均
 
 ---
 
-<img src="./images/book-structure.svg" alt="全书结构：约束链的九次跃迁" width="100%" />
+![全书结构：约束链的九次跃迁](images/book-structure.svg){ width=100% }
 
 ---
 
@@ -44,6 +44,6 @@ description: "一本讲透云网络的开源书：VPC、VxLAN、NAT 与负载均
 - **邮箱**：[caozhiyi5@gmail.com](mailto:caozhiyi5@gmail.com) —— 勘误、交流、转载，都欢迎
 - **公众号**：**煮码宝藏**（扫码关注）
 
-<img src="./images/wechat-qr.jpg" alt="公众号：煮码宝藏" width="140" />
+![公众号：煮码宝藏](images/wechat-qr.jpg){ width=140 }
 
 > 如果这本书帮你理清了某个绕了很久的概念，欢迎去 [GitHub 仓库](https://github.com/caozhiyi/network-book) 点个 Star，这是对作者最大的鼓励。
