@@ -1,0 +1,77 @@
+# 云网络：从隔离到连接 (Cloud Network: From Isolation to Connection)
+
+> 一本讲透云网络的开源书。每个云产品，都是对一个真实约束的回答：从物理网络与数据中心、
+> VLAN/VxLAN 多租户隔离、VPC 内部通信、公网接入与负载均衡，到 VPC 互联、混合云专线、
+> 全球加速、DDoS/WAF 安全防护与可观测治理。作者：曹智轶 (caozhiyi)。
+
+## 基本信息
+
+- 在线阅读: https://caozhiyi.cc/network-book/
+- GitHub 源码: https://github.com/caozhiyi/network-book
+- 许可协议: CC BY-NC-SA 4.0
+- 语言: 简体中文
+
+## 全书目录
+- [首页](https://caozhiyi.cc/network-book/): 一本讲透云网络的开源书：VPC、VxLAN、NAT 与负载均衡、专线混合云、GSLB 与 CDN、DDoS 防护——每个云产品，都是对一个真实约束的回答。
+- [云网络为什么值得学：从约束驱动的视角理解云产品](https://caozhiyi.cc/network-book/00.%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2/): 每个云网络产品，都是对一个真实约束的回答。这本开源书把演化过程完整展开：从一根网线到 VPC、混合云、全球加速与流量治理。
+
+### 卷一: 物理网络的边界
+- [物理网络的边界：广播域、带宽与距离的三重天花板](https://caozhiyi.cc/network-book/00a.%E5%8D%B7%E4%B8%80%E5%AF%BC%E8%AF%BB%E7%89%A9%E7%90%86%E7%BD%91%E7%BB%9C%E7%9A%84%E8%BE%B9%E7%95%8C/): 卷一导读：从一根网线到十万台机器，物理网络撞上广播域膨胀、带宽瓶颈与跨机房距离——每个天花板都催生了后续的云网络产品。
+- [从一根网线到数据中心网络：交换机、广播域与三层架构](https://caozhiyi.cc/network-book/01.%E4%B8%80%E6%A0%B9%E7%BD%91%E7%BA%BF%E4%B8%A4%E5%A4%B4%E6%98%AF%E8%B0%81/): 两台机器一根线如何长成十万台机器的网络：集线器到交换机、广播域膨胀、传统三层架构的瓶颈——数据中心网络的物理起点。
+- [数据中心网络架构：十万台机器如何组网](https://caozhiyi.cc/network-book/02.%E5%8D%81%E4%B8%87%E5%8F%B0%E6%9C%BA%E5%99%A8%E7%9A%84%E7%BD%91%E7%BB%9C/): Spine-Leaf 为什么取代传统三层：东西流量的爆发、物理层次堆叠、收敛比与超载——数据中心网络架构的演化逻辑。
+
+### 卷二: 多租户隔离
+- [多租户隔离导读：从 VLAN 到 VxLAN 的隔离跃迁](https://caozhiyi.cc/network-book/02a.%E5%8D%B7%E4%BA%8C%E5%AF%BC%E8%AF%BB%E5%A4%9A%E7%A7%9F%E6%88%B7%E9%9A%94%E7%A6%BB/): 卷二导读：共用网络的三大噩梦如何一步步催生 VLAN、VxLAN 与 Overlay——隔离不是安全功能，是多租户云的地基。
+- [多租户网络隔离：为什么云上不能共用一张网](https://caozhiyi.cc/network-book/03.%E5%85%B1%E7%94%A8%E7%BD%91%E7%BB%9C%E7%9A%84%E5%99%A9%E6%A2%A6/): 一百万个租户共用网络的信任灾难：MAC 冲突、ARP 广播泄露、IP 段撞车——云网络必须解决的第一个问题。
+- [VLAN 隔离原理与 4096 的天花板](https://caozhiyi.cc/network-book/04.VLAN%E7%9A%84%E8%BE%B9%E7%95%8C/): VLAN 如何用标签划出广播域，又如何撞上 4096 上限与跨三层的天花板——从 VLAN 到 VxLAN，云网络隔离的第一次跃迁。
+- [VxLAN 是什么：Overlay 网络与包中包隧道原理](https://caozhiyi.cc/network-book/05.%E7%BB%99%E5%8C%85%E8%A3%B9%E5%86%8D%E5%A5%97%E4%B8%80%E5%B1%82VxLAN%E4%B8%8EOverlay%E7%BD%91%E7%BB%9C/): 给包裹再套一层：Tunnel 包中包思想、VxLAN 报文格式与 VNI、VTEP 的起点终点——Overlay 如何在大二层上重建隔离。
+- [VTEP 在哪里：软件封包、硬件卸载与分布式网关](https://caozhiyi.cc/network-book/06.Tunnel%E5%9C%A8%E5%93%AA%E9%87%8C%E7%BB%88%E6%AD%A2VTEP%E7%9A%84%E8%90%BD%E7%82%B9/): 隧道终结点的三种落法：内核软件 VTEP、Leaf 交换机与 SmartNIC 硬件卸载、VTEP 兼任路由器的分布式网关——Overlay 落地的工程抉择。
+
+### 卷三: VPC内部通信
+- [VPC 内部通信导读：一个 ping 包的完整旅途](https://caozhiyi.cc/network-book/07a.%E5%8D%B7%E4%B8%89%E5%AF%BC%E8%AF%BBVPC%E5%86%85%E9%83%A8%E9%80%9A%E4%BF%A1/): 卷三导读：同子网 ARP 代答、跨子网分布式路由、安全组守门、DHCP/DNS/元数据——VPC 内部一个包从生到死的全链路。
+- [VPC 是什么：从 VxLAN 技术到云产品的边界](https://caozhiyi.cc/network-book/07.VPC%E6%98%AF%E4%BB%80%E4%B9%88%E4%BB%8E%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF%E5%88%B0%E4%BA%91%E4%BA%A7%E5%93%81/): VPC 不只是一个网络，是一张产品化的承诺：子网划分、路由表、地址空间的边界——网络技术如何被包装成云上租户的第一入口。
+- [VPC 子网内通信原理：ARP 代答与虚拟化封包](https://caozhiyi.cc/network-book/08.%E5%90%8C%E4%B8%80%E4%B8%AA%E5%AD%90%E7%BD%91%E5%86%85%E7%9A%84%E9%80%9A%E4%BF%A1ARP%E4%BB%A3%E7%AD%94%E4%B8%8E%E5%B0%81%E5%8C%85/): 云上一个 ping 包怎么走：为什么不能放任 ARP 广播、控制面如何预先代答、包在哪里被封上 VxLAN——同子网通信的控制面与数据面分离。
+- [跨子网路由原理：从集中式网关到分布式网关](https://caozhiyi.cc/network-book/09.%E8%B7%A8%E5%AD%90%E7%BD%91%E9%80%9A%E4%BF%A1%E5%88%86%E5%B8%83%E5%BC%8F%E7%BD%91%E5%85%B3%E4%B8%8E%E4%B8%89%E5%B1%82%E8%B7%AF%E7%94%B1/): 跨子网意味着每个包都要过网关：集中式网关的带宽与故障瓶颈，如何变成每台宿主机上的分布式网关——VPC 三层路由的架构跃迁。
+- [安全组与网络 ACL 的区别：有状态过滤在哪里执行](https://caozhiyi.cc/network-book/10.%E8%B0%81%E6%9D%A5%E5%AE%88%E9%97%A8%E5%AE%89%E5%85%A8%E7%BB%84%E4%B8%8E%E7%BD%91%E7%BB%9CACL/): VPC 的门锁系统：安全组为什么必须有状态、在宿主机哪里执行、与网络 ACL 的分工——云上流量过滤的两层防线。
+- [VPC 基础网络服务：DHCP、DNS、元数据与弹性网卡](https://caozhiyi.cc/network-book/11.VPC%E5%86%85%E7%9A%84%E5%9F%BA%E7%A1%80%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1DHCP%E4%B8%8EDNS%E4%B8%8E%E5%85%83%E6%95%B0%E6%8D%AE%E4%B8%8E%E5%BC%B9%E6%80%A7%E7%BD%91%E5%8D%A1/): 一个模式的反复出现：把控制面已知的答案填进协议格式里——DHCP 代答、Private DNS、元数据服务与弹性网卡的设计共性。
+- [Pod 如何获得 VPC IP：VPC-CNI 与容器网络直通](https://caozhiyi.cc/network-book/12.%E5%AE%B9%E5%99%A8%E5%8A%A0%E5%85%A5VPC%E4%B9%8BPod%E5%A6%82%E4%BD%95%E8%8E%B7%E5%BE%97VPC_IP/): 一台 VM 跑几十个容器后 Overlay-on-Overlay 的困境，与 VPC-CNI 让每个 Pod 直通 VPC IP 的两条路线——容器网络如何长进云网络。
+
+### 卷四: 公网连接
+- [公网连接导读：NAT、EIP 与负载均衡的诞生](https://caozhiyi.cc/network-book/12a.%E5%8D%B7%E5%9B%9B%E5%AF%BC%E8%AF%BB%E5%85%AC%E7%BD%91%E8%BF%9E%E6%8E%A5/): 卷四导读：私有网络如何与公网世界打交道——SNAT 出去、EIP 进来、负载均衡接住洪峰，三个产品对应三个约束。
+- [NAT 网关原理：SNAT、NAPT 与端口耗尽](https://caozhiyi.cc/network-book/13.VM%E8%A6%81%E4%B8%8A%E7%BD%91NAT%E7%BD%91%E5%85%B3%E7%9A%84%E8%AF%9E%E7%94%9F/): 私有 IP 如何上公网：换源地址的 SNAT 与它的记忆、一个 IP 几万人共用的 NAPT、端口耗尽的边界——NAT 网关的诞生逻辑。
+- [弹性公网 IP（EIP）原理：绑定机制与 FloatingIP 流量路径](https://caozhiyi.cc/network-book/14.%E5%9B%BA%E5%AE%9A%E7%9A%84%E5%85%AC%E7%BD%91%E8%BA%AB%E4%BB%BD%E5%BC%B9%E6%80%A7%E5%85%AC%E7%BD%91IP/): NAT 做不到的事：固定公网身份——EIP 如何绑定 VM、FloatingIP 在哪一层改写流量、EIP 与 NAT 网关的分工。
+- [四层负载均衡原理：五元组转发与 DNS 轮询的局限](https://caozhiyi.cc/network-book/15.%E6%B5%81%E9%87%8F%E6%B6%8C%E5%85%A5%E4%B8%80%E5%8F%B0%E6%92%91%E4%B8%8D%E4%BD%8F%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/): 一台 VM 撑不住之后：DNS 轮询为什么不够、四层 LB 如何基于五元组转发、健康检查与会话保持——流量分发的第一层。
+- [七层负载均衡原理：反向代理与 Header 改写](https://caozhiyi.cc/network-book/16.%E4%B8%8D%E6%AD%A2%E8%BD%AC%E5%8F%91%E8%BF%98%E8%A6%81%E8%AF%BB%E6%87%82%E8%AF%B7%E6%B1%82%E4%B8%83%E5%B1%82%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/): 四层看不见请求内容的天花板：七层 LB 的本质是两段 TCP、反向代理如何把入口变成流量加工点——从转发到读懂请求。
+
+### 卷五: VPC互联
+- [VPC 互联导读：对等连接、云联网与 PrivateLink](https://caozhiyi.cc/network-book/16a.%E5%8D%B7%E4%BA%94%E5%AF%BC%E8%AF%BBVPC%E4%BA%92%E8%81%94/): 卷五导读：隔离的副作用是 VPC 之间天然不通——点对点对等连接、总线式云联网、地址冲突下的 PrivateLink，三条互通之路。
+- [VPC 对等连接原理：一次下发与双轨协同](https://caozhiyi.cc/network-book/17.%E4%B8%A4%E4%B8%AAVPC%E4%B9%8B%E9%97%B4%E6%8B%89%E4%B8%80%E6%9D%A1%E7%BA%BF%E5%AF%B9%E7%AD%89%E8%BF%9E%E6%8E%A5/): 两个 VPC 拉一条线没那么简单：控制面一次下发、两侧路由双轨协同、地址不能撞车——对等连接的产品语义与限制。
+- [云联网是什么：VPC 互联的总线与全局路由表](https://caozhiyi.cc/network-book/18.VPC%E4%BA%92%E8%81%94%E7%9A%84%E6%80%BB%E7%BA%BF%E4%BA%91%E8%81%94%E7%BD%91/): N 个 VPC 两两拉线不可持续：中心节点承接控制面数据面策略面、一张全局路由表替所有人做决策——云联网的总线架构。
+- [PrivateLink 原理：地址冲突也要互访的私有连接](https://caozhiyi.cc/network-book/19.%E5%9C%B0%E5%9D%80%E5%86%B2%E7%AA%81%E4%B9%9F%E8%A6%81%E4%BA%92%E8%AE%BFPrivateLink/): VNI 都能隔离同 IP 了，为什么对等连接过不了 CIDR 关——换个抽象层，让服务而不是网络成为互通单位：PrivateLink 的角色与流量路径。
+
+### 卷六: 混合云网络
+- [混合云网络导读：VPN、专线与云联网纵向扩展](https://caozhiyi.cc/network-book/19a.%E5%8D%B7%E5%85%AD%E5%AF%BC%E8%AF%BB%E6%B7%B7%E5%90%88%E4%BA%91%E7%BD%91%E7%BB%9C/): 卷六导读：云和 IDC 两个网络世界如何打通——公网加密隧道、物理光纤专线、统一管理的云联网扩展，三条接入之路。
+- [云上 VPN 连接原理：IKE 与 ESP 的设计](https://caozhiyi.cc/network-book/20.%E7%94%A8%E4%BA%92%E8%81%94%E7%BD%91%E6%89%93%E9%80%9A%E4%BA%91%E5%92%8CIDC%E4%B9%8BVPN%E8%BF%9E%E6%8E%A5/): 用互联网打通云和 IDC：加密与隧道到底解决什么问题、IKE 如何协商密钥、ESP 为什么这样设计——站点到站点 VPN 的原理。
+- [云专线接入原理：物理光纤、VLAN 与 QinQ](https://caozhiyi.cc/network-book/21.%E6%8B%89%E4%B8%80%E6%A0%B9%E5%85%89%E7%BA%A4%E4%B8%93%E7%BA%BF%E6%8E%A5%E5%85%A5/): 一条不走公网的物理通道：从 IDC 到云厂商机房的光纤、一条光纤上的多个逻辑连接、VLAN 与 QinQ 的复用——专线的物理层与逻辑层。
+- [混合云统一组网：云联网如何接入 IDC 专线](https://caozhiyi.cc/network-book/22.%E7%BB%9F%E4%B8%80%E7%AE%A1%E7%90%86%E4%BA%91%E5%92%8CIDC%E7%9A%84%E8%BF%9E%E6%8E%A5%E4%BA%91%E8%81%94%E7%BD%91%E7%9A%84%E7%BA%B5%E5%90%91%E6%89%A9%E5%B1%95/): VPN 与专线并存后的架构撕裂：专线从公路变成云联网的匝道、带宽包的成本骨架——异构链路如何被统一管理。
+
+### 卷七: 全球接入与加速
+- [全球接入导读：DNS 调度、Anycast 与 CDN](https://caozhiyi.cc/network-book/22a.%E5%8D%B7%E4%B8%83%E5%AF%BC%E8%AF%BB%E5%85%A8%E7%90%83%E6%8E%A5%E5%85%A5%E4%B8%8E%E5%8A%A0%E9%80%9F/): 卷七导读：全球用户如何更快找到服务——GSLB 的 DNS 调度、Anycast 的就近入口、CDN 把内容推到用户身边，三层加速体系。
+- [GSLB 全局负载均衡：权威 DNS 如何变成调度引擎](https://caozhiyi.cc/network-book/23.%E5%85%A8%E7%90%83%E7%94%A8%E6%88%B7%E5%A6%82%E4%BD%95%E6%89%BE%E5%88%B0%E6%9C%80%E8%BF%91%E7%9A%84%E6%9C%8D%E5%8A%A1DNS%E4%B8%8EGSLB/): TCP 建立之前谁在替用户选：权威 DNS 是整条链路唯一的调度控制点、GSLB 如何把静态映射改造成调度引擎——DNS 调度的边界与代价。
+- [Anycast 原理：让 BGP 自己选入口的云骨干网](https://caozhiyi.cc/network-book/24.%E8%AE%A9%E6%B5%81%E9%87%8F%E8%B5%B0%E6%9B%B4%E5%A5%BD%E7%9A%84%E8%B7%AFAnycast%E4%B8%8E%E4%BA%91%E9%AA%A8%E5%B9%B2%E7%BD%91/): 60 毫秒差在哪里：公网路径的延迟损耗、Anycast 如何让 BGP 自动选最近入口、Anycast 遇上 TCP 的裂缝——云骨干网的加速本质。
+- [CDN 原理：边缘节点、缓存分层与 TTL 博弈](https://caozhiyi.cc/network-book/25.%E6%8A%8A%E5%86%85%E5%AE%B9%E6%8E%A8%E5%88%B0%E7%94%A8%E6%88%B7%E8%BA%AB%E8%BE%B9CDN%E4%B8%8E%E8%BE%B9%E7%BC%98%E8%8A%82%E7%82%B9/): 把内容推到用户身边：动态与静态的分野、从一份副本到几十亿次命中的缓存分层、源站声明与 CDN 覆盖的 TTL 博弈。
+
+### 卷八: 流量安全防护
+- [流量安全防护导读：DDoS、WAF 与应用层防御](https://caozhiyi.cc/network-book/25a.%E5%8D%B7%E5%85%AB%E5%AF%BC%E8%AF%BB%E6%B5%81%E9%87%8F%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4/): 卷八导读：开放公网意味着随时被打——四层洪水、七层伪装，DDoS 防护与 WAF 如何在用户感知之前挡住攻击。
+- [DDoS 防护原理：攻击指纹与骨干层止损](https://caozhiyi.cc/network-book/26.%E6%B4%AA%E6%B0%B4%E6%9D%A5%E8%A2%ADDDoS%E9%98%B2%E6%8A%A4/): 单点为什么扛不住 DDoS：三类攻击的手法与指纹、Blackhole 路由的止损逻辑、清洗中心的回注——洪水来袭时的分层防御。
+- [WAF 原理：应用层攻击如何被识别与拦截](https://caozhiyi.cc/network-book/27.%E4%BC%AA%E8%A3%85%E6%88%90%E6%AD%A3%E5%B8%B8%E8%AF%B7%E6%B1%82%E7%9A%84%E6%94%BB%E5%87%BBWAF%E4%B8%8E%E5%BA%94%E7%94%A8%E5%B1%82%E9%98%B2%E6%8A%A4/): 四层看不见的攻击面：伪装成正常请求的攻击、WAF 为什么必须终结 TLS、规则与语义分析的代价——应用层防护的位置与权衡。
+
+### 卷九: 可观测与流量治理
+- [可观测与流量治理导读：流日志、探测与服务网格](https://caozhiyi.cc/network-book/27a.%E5%8D%B7%E4%B9%9D%E5%AF%BC%E8%AF%BB%E5%8F%AF%E8%A7%82%E6%B5%8B%E4%B8%8E%E6%B5%81%E9%87%8F%E6%B2%BB%E7%90%86/): 卷九导读：Overlay 之后物理可观测性失灵——流日志、主动探测、多路径容灾、服务网格与 eBPF，看不见的网络如何被重新看见。
+- [网络流日志原理：从包到流的降维观测](https://caozhiyi.cc/network-book/28.%E5%87%BA%E4%BA%86%E9%97%AE%E9%A2%98%E4%BB%8E%E5%93%AA%E6%9F%A5%E8%B5%B7%E7%BD%91%E7%BB%9C%E6%B5%81%E6%97%A5%E5%BF%97/): Overlay 之后物理交换机看不见租户流量：从包到流的有代价降维、五元组聚合、流日志的存储与查询——云网络的可观测性起点。
+- [网络主动探测：拨测与互探网格原理](https://caozhiyi.cc/network-book/29.%E5%9C%A8%E7%94%A8%E6%88%B7%E6%84%9F%E7%9F%A5%E4%B9%8B%E5%89%8D%E5%8F%91%E7%8E%B0%E6%95%85%E9%9A%9C%E4%B8%BB%E5%8A%A8%E6%8E%A2%E6%B5%8B/): 被动记录的天花板是用户先报障：探针怎么布、互探网格与服务拨测的代价权衡——在用户感知之前发现故障。
+- [网络层容灾：ECMP 多路径与故障自愈](https://caozhiyi.cc/network-book/30.%E6%95%85%E9%9A%9C%E6%97%B6%E5%A6%82%E4%BD%95%E8%87%AA%E6%95%91%E5%A4%9A%E8%B7%AF%E5%BE%84%E4%B8%8E%E7%BD%91%E7%BB%9C%E5%B1%82%E5%AE%B9%E7%81%BE/): 人在回路里的代价：ECMP 多路径冗余、BFD 快速感知、路由收敛如何把分钟级故障变成秒级自愈——故障时网络如何自救。
+- [服务网格与 eBPF：微服务流量治理的两条路线](https://caozhiyi.cc/network-book/31.%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%9A%84%E6%B5%81%E9%87%8F%E6%B2%BB%E7%90%86%E6%9C%8D%E5%8A%A1%E7%BD%91%E6%A0%BC%E4%B8%8EeBPF/): 请求落在哪个 Pod 是谁决定的：治理逻辑放 sidecar 还是内核——服务网格的重叠网络与 eBPF 的无侵入路线。
+
+### 后记
+- [云网络的下一个根本性约束：状态住在哪里](https://caozhiyi.cc/network-book/32.%E5%90%8E%E8%AE%B0%E4%BA%91%E7%BD%91%E7%BB%9C%E7%9A%84%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%A0%B9%E6%9C%AC%E6%80%A7%E7%BA%A6%E6%9D%9F/): 从隔离到连接的一条贯穿线：无状态转发如何一路赢到今天、有状态服务为什么是下一个约束——云网络后记与推演。
